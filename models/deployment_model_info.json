@@ -1,0 +1,8 @@
+{
+    "model_name": "Random Forest",
+    "n_estimators": 100,
+    "max_depth": 16,
+    "accuracy": 0.9693,
+    "phishing_f1": 0.9653,
+    "model_file": "deployment_model.joblib"
+}

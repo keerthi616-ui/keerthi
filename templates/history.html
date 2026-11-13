@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}History | PhishGuard{% endblock %}
+
+{% block content %}
+<section class="page-card">
+    <h1>Scan History</h1>
+    <p class="subtitle">Previously analysed URLs.</p>
+
+    {% if records %}
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Prediction</th>
+                    <th>Confidence</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in records %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td class="url-cell">{{ item.url }}</td>
+                    <td>
+                        <span class="status
+                        {% if item.prediction == 'Phishing' %}danger-text{% else %}safe-text{% endif %}">
+                            {{ item.prediction }}
+                        </span>
+                    </td>
+                    <td>{{ "%.2f"|format(item.confidence * 100) }}%</td>
+                    <td>{{ item.checked_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p>No scan records available yet.</p>
+    {% endif %}
+</section>
+{% endblock %}

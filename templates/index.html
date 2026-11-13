@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Home | PhishGuard{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="shield">🛡</div>
+    <p class="eyebrow">AI-POWERED URL SECURITY</p>
+    <h1>Detect Phishing Websites<br><span>Before They Harm You</span></h1>
+    <p class="subtitle">
+        Analyse suspicious URLs using machine learning
+        and identify potentially dangerous websites.
+    </p>
+
+    <div class="scan-card">
+        <h2>Scan a Website URL</h2>
+        <form method="POST" action="/">
+            <input
+                type="text"
+                name="url"
+                placeholder="Enter website URL (e.g. https://example.com)"
+                value="{{ submitted_url }}"
+                required
+            >
+            <button type="submit">Analyse URL →</button>
+        </form>
+        <p class="hint">Enter a URL to receive a machine-learning prediction.</p>
+    </div>
+
+    {% if result %}
+    <div class="result-card {% if result == 'Phishing' %}danger{% else %}safe{% endif %}">
+        <h2>
+            {% if result == 'Phishing' %}
+                ⚠ Potential Phishing Website
+            {% else %}
+                ✓ Predicted Legitimate
+            {% endif %}
+        </h2>
+        <p><strong>URL:</strong> {{ submitted_url }}</p>
+        <p><strong>Prediction:</strong> {{ result }}</p>
+        <p><strong>Model confidence:</strong> {{ "%.2f"|format(confidence * 100) }}%</p>
+        <p class="hint">
+            This is a model prediction, not a guarantee of website safety.
+        </p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

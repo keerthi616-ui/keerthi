@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}About | PhishGuard{% endblock %}
+
+{% block content %}
+<section class="page-card">
+    <h1>About PhishGuard</h1>
+
+    <p>
+        PhishGuard is a machine-learning-based phishing URL
+        detection system designed to identify potentially
+        malicious and legitimate website URLs.
+    </p>
+
+    <h2>Project Features</h2>
+    <ul>
+        <li>Real-time URL feature extraction</li>
+        <li>Random Forest classification model</li>
+        <li>Phishing and legitimate URL prediction</li>
+        <li>Scan history using SQLite</li>
+        <li>Analytics dashboard</li>
+    </ul>
+
+    <h2>Datasets</h2>
+    <ul>
+        <li>PhiUSIIL Phishing URL Dataset</li>
+        <li>PhishStorm URL Dataset</li>
+    </ul>
+
+    <h2>Machine Learning Algorithms</h2>
+    <ul>
+        <li>Random Forest</li>
+        <li>Decision Tree</li>
+        <li>Logistic Regression</li>
+        <li>Extra Trees</li>
+    </ul>
+
+    <p class="hint">
+        Predictions are based on URL characteristics and should
+        not be treated as a guarantee of website safety.
+    </p>
+</section>
+{% endblock %}
